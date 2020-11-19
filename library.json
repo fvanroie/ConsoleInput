@@ -1,0 +1,21 @@
+{
+    "name": "ConsoleInput",
+    "keywords": "serial, console, input, readline",
+    "description": "A library to implement a simple console input line that accepts ANSII escape codes for cursor movements and simple command history.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fvanroie/ConsoleInput.git"
+    },
+    "version": "0.0.1",
+    "exclude": "tests",
+    "examples": "examples/*/*.ino",
+    "frameworks": [
+        "arduino",
+        "stm32duino"
+    ],
+    "platforms": [
+        "stm32",
+        "espressif8266",
+        "espressif32"
+    ]
+}
