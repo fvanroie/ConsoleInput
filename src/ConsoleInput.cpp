@@ -100,7 +100,7 @@ inline void ConsoleInput::print_sequence()
 
     stream->println();
     stream->printf_P(PSTR("\\e%s => "), esc_sequence + 1);
-    for (int i = 1; i < sizeof(esc_sequence); i++)
+    for (int i = 1; i < (int)sizeof(esc_sequence); i++)
     {
         if (esc_sequence[i] == 0)
         {
@@ -752,15 +752,15 @@ int16_t ConsoleInput::readKey()
             history_index = 0;
             break;
 
-        case 'G': // BELL
+        case KEY_CTRL('G'): // BELL
             return key;
 
-        case 'H': // Backspace
+        case KEY_CTRL('H'): // Backspace
             if (flags.auto_edit)
                 do_backspace();
             return KEY_BACKSPACE;
 
-        case 9: // Tab
+        case 9: // TAB
             return key;
 
         case KEY_LF ... KEY_CR:
