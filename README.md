@@ -69,11 +69,15 @@ void parser(const char *input)
 Handling special key input is easy by just checking against the library constants.
 
 ```cpp
-   /* Optionally Handle some special command line keys here, if required */
+void loop()
+{
+    uint16_t key = console.readKey(); // required in loop()
+
+    /* Optionally Handle some special keys */
     if (key == ConsoleInput::KEY_PAGE_UP) {
         console.println("PAGE_UP pressed");
     }
- 
+}
 ```
 
 [1]: https://discord.gg/VCWyuhF
