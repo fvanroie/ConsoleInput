@@ -22,7 +22,7 @@ Check out the example in the examples folder.
 ConsoleInput console(&Serial, BUFFER_SIZE);
 ```
 
-### Readkeys
+### Read Key
 
 In the main loop repeatedly call `readKey()` to check for input.
 This call also ensures the commandline updates are processed, like text input, arrow keys, Home and End keys...
@@ -39,7 +39,7 @@ void loop()
 
 Even if you don't need the actual `key` value in your program, you must call `readKey()` to ensure the commandline can process the incoming charaters.
 
-### Callback
+### Line Callback
 
 Optionally set a callback function that is called whenever `CR/LF`, `CR` or `LF` is detected.
 
@@ -64,7 +64,7 @@ void parser(const char *input)
 }
 ```
 
-### Handling keypress
+### Special Keys
 
 Handling special key input is easy by just checking against the library constants.
 
