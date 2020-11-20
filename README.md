@@ -13,4 +13,51 @@ are also recognozed and can be handled in your program is required.
 A callback routine can be set which will execute when ENTER/RETURN is pressed, so you can parse and handle the user input.
 Check out the example in the examples folder.
 
+### Include ConsoleInput
+
+```cpp
+#include "ConsoleInput.h"
+ConsoleInput console(&Serial, BUFFER_SIZE);
+```
+
+### Readkeys
+
+In the main loop repeadedly call `readKey()` to check for input.
+This call also ensures the commandline updates are processed, like text input, arrow keys, Home and End keys...
+
+The `readKey()` function is non-blocking and immediately returns `ConsoleInput::KEY_NONE` if no input is detected.
+
+```cpp
+void loop()
+{
+    /* Non-blocking check for a keypress and update the command line */
+    uint16_t key = console.readKey(); // required in loop()
+}
+```
+
+### Callback
+
+Optionally set a callback function that is called whenever `CR/LF`, `CR` or `LF` is detected.
+
+```cpp
+void setup()
+{
+    /* entered lines are handled by the parser function */
+    console.setLineCallback(parser);
+}
+```
+
+### Input Handling
+
+The input callback function must have a signature `void func(const char *input)`.
+It is called with a pointer to the current text on the commandline.
+
+```
+void parser(const char *input)
+{
+        console.print("Hello ");
+        console.println(input);
+}
+```
+
 [1]: https://discord.gg/VCWyuhF
