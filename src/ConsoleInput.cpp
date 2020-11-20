@@ -752,18 +752,16 @@ int16_t ConsoleInput::readKey()
             history_index = 0;
             break;
 
-        case 7: // Backspace
+        case 'G': // BELL
+            return key;
+
+        case 'H': // Backspace
             if (flags.auto_edit)
                 do_backspace();
             return KEY_BACKSPACE;
 
-        case 8:
-            break;
-
-        case 9: // Delete
-            if (flags.auto_edit)
-                do_delete();
-            return KEY_DELETE;
+        case 9: // Tab
+            return key;
 
         case KEY_LF ... KEY_CR:
         { // LF, VT, FF, CR

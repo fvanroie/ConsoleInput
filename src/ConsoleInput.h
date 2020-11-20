@@ -51,7 +51,7 @@ public:
   static const int KEY_CR = 0x0d;
   static const int KEY_PAUSE = 0x1a;
   static const int KEY_ESC = 0x1b;
-  static const int KEY_BACKSPACE = 0x07;
+  static const int KEY_BACKSPACE = 0x08;
 
   static const int KEY_UP = 256;
   static const int KEY_DOWN = 257;
