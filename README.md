@@ -24,7 +24,7 @@ ConsoleInput console(&Serial, BUFFER_SIZE);
 
 ### Readkeys
 
-In the main loop repeadedly call `readKey()` to check for input.
+In the main loop repeatedly call `readKey()` to check for input.
 This call also ensures the commandline updates are processed, like text input, arrow keys, Home and End keys...
 
 The `readKey()` function is non-blocking and immediately returns `ConsoleInput::KEY_NONE` if no input is detected.
@@ -36,6 +36,8 @@ void loop()
     uint16_t key = console.readKey(); // required in loop()
 }
 ```
+
+Even if you don't need the actual `key` value in your program, you must call `readKey()` to ensure the commandline can process the incoming charaters.
 
 ### Callback
 
@@ -51,15 +53,27 @@ void setup()
 
 ### Input Handling
 
-The input callback function must have a signature `void func(const char *input)`.
+The input callback function must have a signature `void func(const char *)`.
 It is called with a pointer to the current text on the commandline.
 
-```
+```cpp
 void parser(const char *input)
 {
         console.print("Hello ");
         console.println(input);
 }
+```
+
+### Handling keypress
+
+Handling special key input is easy by just checking against the library constants.
+
+```cpp
+   /* Optionally Handle some special command line keys here, if required */
+    if (key == ConsoleInput::KEY_PAGE_UP) {
+        console.println("PAGE_UP pressed");
+    }
+ 
 ```
 
 [1]: https://discord.gg/VCWyuhF
