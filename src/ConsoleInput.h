@@ -73,7 +73,7 @@ public:
   static const int KEY_FN = -512;
 
   ConsoleInput(Stream *serial, size_t size = 0);
-  ~ConsoleInput();
+  virtual ~ConsoleInput();
 
   int16_t readKey();
   int16_t getChar(uint8_t index);
